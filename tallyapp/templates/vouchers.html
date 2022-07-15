@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<h5 class="text-capitalize" style="text-align:center;">vouchers</h5>
+<div>
+    <table>
+    {% for i in com %}
+    {% if i.active == 1 %}
+    <tr>
+     <div style="margin-left: 20px;">{{i.name}}</div></tr>
+     {% endif %}
+    {% endfor %}
+    </table>
+</div>
+         
+<div class="row container-fluid p-0 mx-0">
+    <div class="col-sm-4 m-1 p-0"></div>
+    <div class="col-sm-4 m-1 p-0" style=" background-color:rgba(0,0,0,0.2);height: 400px;">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->    
+       
+    <div  class="bg-info text-light">List of vouchertypes</div>
+    
+           <div>
+               <table>
+                <tr>
+                    <div style="text-align: right;margin-right: 20px;"><a href="#">Create</a></div>  
+                </tr>
+                {% for i in com %}
+                {% if i.active == 1 %}
+                <tr>
+                <div style="margin-left: 20px;color: black;">{{i.name}}</div></tr>
+                {% endif %}
+                {% endfor %}
+                
+               
+                <hr style="width:100%;text-align:left;margin-left:0">
+                <tr>
+                    <div style="margin-left: 20px;"><b> Accounting vouchers</b></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofgroup' %}">Contra</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'creditnote' %}">Credit Note</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofcostcentres' %}">Debit Note</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofcurrencies' %}">Journal</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="">Payment</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Purchase</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Receipt</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Sales</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 20px;"><b> Inventory Vouchers</b></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Physical Stock</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Stock Journal</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 20px;"><b> Payroll Vouchers</b></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Attendance</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Payroll</a></div>   
+                </tr>
+            </table>
+           </div>
+        </div>
+    </div>
+   
+   
+{% endblock %}
