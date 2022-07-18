@@ -11,10 +11,12 @@
         }
     </style>
 
-  <div class="m-0">
+    
+  <div class="m-0" style="width: 800px;margin-left: 100px;">
      <!---->
        
-    <h6 style="" class="bg-info text-light p-1 m-1 text-left">Credit Note</h6>
+    <h6 class="bg-info text-light p-1 m-1 text-left">Credit Note</h6>
+    
     <div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
 
             <form  style="background-color:rgba(0,0,0,.4);" method="post" action="#">
@@ -37,29 +39,29 @@
 
 
                     </div>
+                </div>
+              
 
-                    <div class="col-sm-3 m-0 p-0"></div>
-
-                
-                
-            </div>
-
-           <div class="row container-fluid  p-0 m-0" style=" border: 1px solid rgba(128, 128, 128, 0.6);">
-               <!-- <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);"> -->
+           <div class="row container-fluid  p-0 m-0" style=" border: 1px solid rgba(128, 128, 128, 0.6);"> 
+      <!-- <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">  -->
                     
 
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-6 m-0 p-0"> <label for="c">Name of Item</label></div>
-                 
+                        
+                    </div>
+                    
+                
 
-                    </div></div>
-
-
+            </div>
+        
+           
                 
                 <!-- Listing -->
-                <div class="row container-fluid p-0" style="margin-left: 400px; margin-top: 10px;">
-                    <div class="col-sm-4 m-1 p-0"></div>
-                    <div class="col-sm-4 m-1 p-0" style=" background-color:rgba(0,0,0,0.2); height: 600px; padding-bottom: 10px;">
+              
+                <div class="row container" style="margin-block-start: -205px;margin-left: 530px;">
+                    <div class="col-sm-4 m-1 p-1"></div>
+                    <div class="col-sm-4 m-1 p-1" style=" background-color:rgba(0,0,0,0.2); height: 400px; padding-bottom: 10px;">
                         <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
                     <div  class="bg-info text-light">List of Ledger Accounts</div>
                            <div>
@@ -75,7 +77,7 @@
                                         
                                     </tr>
                                     <hr style="width:100%;text-align:left;margin-left:0">
-                                    {% for i in lgr %}
+                                    {% for i in ledgerr %}
                         
                                     <tr>
                                     <div style="margin-left: 25px;"><a href="">{{i.name}}</a></div>
@@ -86,10 +88,9 @@
                                </table>
                            </div>
                         </div>
-                    </div>
-                  
-                       
-                        
+                    
+           </div>    
+        
               
      <!--              
                    
@@ -1294,11 +1295,12 @@ function bill(){
 
                          -->
                     
-                        </div>
-                </div>
-            </div>
+                      
+            
                 <div class="enter w-100 py-4"><button class="btn btn-info w-25 px-4">CREATE</button></div>   
                 
             </form>
 
+ 
+           
     {% endblock %}

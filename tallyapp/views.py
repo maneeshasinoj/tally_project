@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
 from django.http import JsonResponse
+from tallyapp.models import receiptdetails
 def index(request):
     comp=Companies.objects.all()
     return render(request,'index.html',{'comp':comp})
@@ -458,8 +459,57 @@ def vouchers(request):
 
 
 def creditnote(request):
-    return render(request,'creditnote.html')
+    ledger=Ledger.objects.all()
+    return render(request,'creditnote.html',{'ledger':ledger})
 
 
 def receiptdetails(request):
     return render(request,'receiptdetails.html')
+
+def partydetails(request):
+    ledger=Ledger.objects.all()
+    return render(request,'partydetails.html',{'ledger':ledger})
+
+def debitnoteregister(request):
+    cmp=Companies.objects.all()
+    print(cmp)
+    return render(request,'debitnoteregister.html',{'cmp':cmp})
+
+def creditnoteregister(request):
+    cmp=Companies.objects.all()
+    print(cmp)
+    return render(request,'creditnoteregister.html',{'cmp':cmp})
+
+def date(request):
+    return render(request,'voucherregister.html')
+
+def load_receiptdetails(request):
+    return render(request,'receiptdetails.html')
+
+def add_receiptdetails(request):
+    
+    if request.method=='POST' :
+
+        trackingno = request.POST['trackno']
+        dispatchno = request.POST['dispatchno']
+        dsptchthrough = request.POST['dsptchthrough']
+        destination = request.POST['destination']
+        carriername = request.POST['carriername']
+        billoflading = request.POST['billoflading']
+        motorvehicleno = request.POST['motorvehicleno']
+        date = request.POST['date']
+        invoiceno = request.POST['invoiceno']
+        invoicedate = request.POST['invoicedate']
+        data=receiptdetails(tracking_no=trackingno,dispatch_Doc_No=dispatchno,dispatch_through=dsptchthrough,destination=destination,
+                            carrier_name=carriername,bill_of_ladding_no=billoflading,date=date,motorvehicle_no=motorvehicleno,
+                            original_invoice_no=invoiceno,invoice_date=invoicedate,ledger=ledger)
+        data.save()       
+    return render(request,'partydetails.html')                     
+
+
+
+
+
+
+
+

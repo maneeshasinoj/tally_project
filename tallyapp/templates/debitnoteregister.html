@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    .enter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .month
+    {
+        
+        display: grid;
+        margin-left: 80px;
+        font-size:large
+    }
+    .text{
+        text:center;
+    }
+    a:hover {
+  background-color: rgb(255, 196, 0);
+}
+
+
+</style>
+
+
+
+
+<div class="">
+<h6 class="bg-info text-light text-left">Debit Note Register</h6>
+<div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
+</div>
+       
+            
+
+
+
+                    <div class="row container-fluid p-0" style=" border: 1px solid rgba(128, 128, 128, 0.6); margin-top: 35px; margin-left: 0px;">
+                        
+                     <!--   <div class="col-sm-4  p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);margin-left: 500px;"> -->
+                        
+                        
+                            <div class="row container-fluid  p-2 m-0">
+                               
+                                  
+                                   <div class="col-sm-4 m-0 p-0 text-left" > <label >Particulars</label>
+                                    <div style="text-align: right; margin-top:-35px;margin-right:18px;font-size:11px"><b>Debit note</b>
+                                        <div style="margin-left:18px;font-weight: 900; font-size:15px;" id="compName"> </div>
+                    
+                                    </div>
+                                    
+                                    
+                        <div style="text-align: right;margin-top:-3px;margin-right:18px;font-weight:900" id="currentDate"></div>
+                                </div>
+                            
+                            
+                           
+                               
+                        
+                         </div>
+                         
+                    </div>
+                <!--                    <div class="col-sm-6 p-2 "style="margin-left:600px" >
+                        <h5 class="text-center">Mailing Details</h5>
+                </div> -->
+                </div>
+                
+               
+</div>
+<script>
+    document.getElementById("currentDate").innerHTML=new Date().toDateString();
+    function setDate(){
+            document.getElementById("currentDate").innerHTML= document.getElementById('enterDate').value;
+        }
+        var table = document.getElementById("table");
+            var cells = table.getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                if(i == 0){
+        
+                    document.getElementById("compName").innerHTML= cells[0].innerText;
+                    setName(cells[0].innerText, cells[1].innerText);
+                }
+             }
+</script>
+<div class="month" >
+    <a href="#">April</a>
+    <a href="#">May</a>
+    <a href="#" >June</a>
+    <a href="#">July</a>
+    <a href="#">August</a>
+    <a href="#">September</a>
+    <a href="#">October</a>
+    <a href="#">November</a>
+    <a href="#">December</a>
+
+</div>
+{% endblock %}
+

@@ -148,3 +148,23 @@ class Ledger_Asset_Statutory(models.Model):
     method_of_calc=models.CharField(max_length=225)
     ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE, blank=True,null=True)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+
+class Ledger_Sundry(models.Model):
+    maintain_balance_bill_by_bill =models.CharField(max_length=225,default="Null",blank=True)
+    default_credit_period=models.CharField(max_length=225,default="Null",blank=True)
+    check_for_credit_days=models.CharField(max_length=225,default="Null",blank=True)
+    ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE, blank=True,null=True)
+    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+
+class receiptdetails(models.Model):
+    tracking_no=models.CharField(max_length=225)
+    dispatch_Doc_No=models.CharField(max_length=225)
+    dispatch_through=models.CharField(max_length=225)
+    destination=models.CharField(max_length=225)
+    carrier_name=models.CharField(max_length=225)
+    bill_of_lading_no=models.CharField(max_length=225)
+    date=models.DateField()
+    motorvehicle_no=models.CharField(max_length=225)
+    original_invoice_no=models.CharField(max_length=225)
+    invoice_date=models.DateField()
+    ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE, blank=True,null=True)

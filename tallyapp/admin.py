@@ -44,3 +44,6 @@ admin.site.register(Ledger_Mailing_Details)
 admin.site.register(Ledger_Banking_Details)
 admin.site.register(Ledger_Asset_Rounding)
 admin.site.register(Ledger_Asset_Statutory)
+
+admin.site.register(Ledger_Sundry)
+admin.site.register(receiptdetails)
