@@ -1,0 +1,79 @@
+
+
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    .enter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+</style>
+
+<div class="">
+<h6 style="font-size: 25px;text-align: left;" class="bg-info text-light"><b>Voucher Register</b></h6>
+<div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
+</div>
+<div class="row container-fluid  p-2 m-0">
+                               
+                                  
+    <div class="col-sm-4 m-4" style="text-align:left">List of all Credit Note Vouchers
+     <div style="text-align: right; margin-top:-35px;margin-right:18px;font-size:11px"><b>Debit note</b>
+         <div style="margin-left:18px;font-weight: 900; font-size:15px;" id="compName"> </div>
+
+     </div>
+     
+     
+<div style="text-align: right;margin-top:-3px;margin-right:18px;font-weight:900" id="currentDate"></div>
+ </div>
+
+
+
+
+
+</div>
+
+</div>
+<script>
+    document.getElementById("currentDate").innerHTML=new Date().toDateString();
+    function setDate(){
+            document.getElementById("currentDate").innerHTML= document.getElementById('enterDate').value;
+    }
+    </script>
+
+<table class="table table-borderless table-sm">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Particulars</th>
+            <th>Voucher type</th>
+            <th>Voucher No.</th>
+            <th>Credit Amount</th>
+            <th>Debit Amount</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in emp %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.employee_name }}</td>
+                <td>{{ p.address }}</td>
+                <td>{{ p.age }}</td>
+                <td>{{ p.email_id }}</td>
+                <td>{{ p.joindate }}</td>
+                
+                <td>{{ p.qualification }}</td>
+                <td>{{ p.gender }}</td>
+                <td>
+                    <a href="{% url 'editpage' p.id %}" class="btn btn-info mt-3 w-100">Edit</a><br>
+                <a href="{% url 'deletepage' p.id %}" class="btn btn-danger mt-3 w-100">Delete</a>
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+</table>
+    {% endblock %}
+

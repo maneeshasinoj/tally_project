@@ -16,72 +16,113 @@
    <h6  class="bg-info text-light p-1 m-1 text-center">Receipt Details</h6>
    <div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
 
-           <form  style="background-color:rgba(0,0,0,.4);" method="post" action="#">
+           <form  style="background-color:rgba(0,0,0,.4);" method="post" action="{% url 'add_receiptdetails' %}">
                {% csrf_token %}
                
                <div class="row container-fluid p-0 m-0" >
 
-                   <div class="col-sm-6 m-0 p-4">
+                <div class="col-sm-6 m-0 p-4">
 
-                       <div class="row container-fluid  p-2 m-0">
-                           <div class="col-sm-4 m-0 p-0"> <label >Tracking No:</label></div>
-                           <div class="col-sm-8 m-0 p-0"><input onchange="showname()" required type="text" class="form-control" id="name"  placeholder="" name="name"></div>
-                       </div>
-
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label >Tracking No:</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                         <input type="text" class="form-control" name="trackno"></div>
+                    </div>
+                </div>
+                       <div class="col-sm-6 m-0 p-4">
                        <div class="row container-fluid  p-2 m-0">
                            <div class="col-sm-4 m-0 p-0"> <label >Dispatch Doc NO:</label></div>
                            <div class="col-sm-8 m-0 p-0"> 
-                           <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                           <input type="text" class="form-control" id="" placeholder="" name="dispatchno"></div>
                        </div>
+                       </div>
+
+                      
+
+                       <div class="col-sm-6 m-0 p-4">
+
                        <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label >Dispatched through</label></div>
                         <div class="col-sm-8 m-0 p-0"> 
-                        <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        <input type="text" class="form-control" id="" placeholder="" name="dsptchthrough"></div>
                     </div>
+                       </div>
+                       <div class="col-sm-6 m-0 p-4">
+
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label >Destination</label></div>
                         <div class="col-sm-8 m-0 p-0"> 
-                        <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        <input type="text" class="form-control" id="" placeholder="" name="destination"></div>
                     </div>
+                       </div>
+                       <div class="col-sm-6 m-0 p-4">
 
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label >Carrier Name/Agent</label></div>
                         <div class="col-sm-8 m-0 p-0"> 
-                        <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        <input type="text" class="form-control" id="" placeholder="" name="carriername"></div>
                     </div>
+                       </div>
+                    <div class="col-sm-6 m-0 p-4">
+
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label >Bill of Ladding</label></div>
                         <div class="col-sm-8 m-0 p-0"> 
-                        <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        <input type="text" class="form-control" id="" placeholder="" name="billoflading"></div>
                     </div>
+                    </div>
+                    <div class="col-sm-6 m-0 p-4">
+
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
                         <div class="col-sm-8 m-0 p-0"> 
-                        <input type="date" class="form-control" id="" placeholder="" name="alias"></div>
+                        <input type="date" class="form-control" id="" placeholder="" name="date"></div>
                     </div>
+                    </div>
+                    <div class="col-sm-6 m-0 p-4">
+
                     <div class="row container-fluid  p-2 m-0">
                         <div class="col-sm-4 m-0 p-0"> <label >Motor vehicle NO:</label></div>
                         <div class="col-sm-8 m-0 p-0"> 
-                        <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        <input type="text" class="form-control" id="" placeholder="" name="motorvehicleno"></div>
                     </div>
+                    </div>
+                    
 
                     <div class="row container-fluid  p-0 m-0" style=" border: 1px solid rgba(128, 128, 128, 0.6);">
                         <!-- <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);"> -->
                              
          
-                             <div class="row container-fluid  p-2 m-0">
-                                 <div class="col-sm-6 m-0 p-0 text-center" > <label for="c"><b>Original Invoice Details</b></label></div>
+                             <hr>
+                                 <div class="col-sm-6 m-0 p-0" > <label for="c"><b>Original Invoice Details</b></label></div>
                           
          
-                             </div></div>
+                             </div>
+                             <div class="col-sm-6 m-0 p-4">
+            
+                                <div class="row container-fluid  p-2 m-0">
+                                    <div class="col-sm-4 m-0 p-0"> <label >Original Incvoice NO:</label></div>
+                                    <div class="col-sm-8 m-0 p-0"> 
+                                    <input type="text" class="form-control" id="" placeholder="" name="invoiceno"></div>
+                                </div>
+                                </div>
 
 
+                             <div class="col-sm-6 m-0 p-4">
 
+                                <div class="row container-fluid  p-2 m-0">
+                                    <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
+                                    <div class="col-sm-8 m-0 p-0"> 
+                                    <input type="date" class="form-control" id="" placeholder="" name="invoicedate"></div>
+                                </div>
+                                </div>
+                               
                    </div>
 
                    <div class="col-sm-3 m-0 p-0"></div>
 
-               
+                   <div class="enter w-100 py-4"><button class="btn btn-info w-25 px-4">SAVE</button></div>  
+                   </form> 
                
            </div>
 {% endblock %}           
