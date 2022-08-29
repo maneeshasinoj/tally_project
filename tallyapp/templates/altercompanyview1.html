@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <div  style="text-align: center;margin-top:-10px;font-weight:900">{{cmp.name}}</div>
+<div hidden  style="text-align: center;margin-top:-10px;font-weight:900">{{cmp.id}}</div> -->
+<div class="row container-fluid p-0 mx-0">
+    <div class="col-sm-4 m-1 p-0"></div>
+    <div class="col-sm-4 m-1 p-0" style=" background-color:rgba(0,0,0,0.2);height: 400px;">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+    <div  class="bg-info text-light">List of Companies</div>
+           <div>
+               <table>
+                
+                <tr>
+                    <div style="text-align: right;margin-right: 20px;margin-top: 20px;">
+                        <a href="{% url 'createcompany' %}">Create Company</a></div>   
+                    
+                </tr>
+                <tr>
+                    <div style="text-align: right;margin-right: 20px;"><a href="{% url 'selectcompany' %}">Select Company</a></div>   
+                        
+                </tr>
+                <tr>
+                    <div style="text-align: right;margin-right: 20px;"><a href="{% url 'shutcompany' %}">Shut Company</a></div>   
+                        
+                </tr>
+                <!--<tr>
+                    <div style="text-align: right;margin-right: 20px;"><a href="{% url 'altercompanyview' %}">Back</a></div>   
+                    
+                </tr>-->
+                <hr style="width:100%;text-align:left;margin-left:0">
+                {% for i in com %}
+                {% if i.active == 1 %}
+        
+                <tr>
+                    
+                <div style="margin-left: 15px;"><a href="{% url 'alter' %}">{{i.name}}</a></div>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                
+               </table>
+           </div>
+        </div>
+    </div>
+   
+
+{% endblock %}

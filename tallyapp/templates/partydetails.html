@@ -1,0 +1,97 @@
+  
+    {% extends 'base.html' %}
+    {% block body %}
+    
+    <style>
+        .enter{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+    </style>
+
+    
+  <div class="m-0" style="width: 800px;margin-left: 100px;">
+     <!---->
+       
+    <h6 class="bg-info text-light p-1 m-1 text-left">Credit Note</h6>
+    
+    <div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
+
+            <form  style="background-color:rgba(0,0,0,.4);" method="post" action="#">
+                {% csrf_token %}
+                
+                <div class="row container-fluid p-0 m-0" >
+
+                    <div class="col-sm-6 m-0 p-4">
+
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Buyer(Biil to)</label></div>
+                            <div class="col-sm-8 m-0 p-0"><input onchange="showname()" required type="text" class="form-control" id="name"  placeholder="" name="name"></div>
+                        </div>
+
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Mailing Address</label></div>
+                            <div class="col-sm-8 m-0 p-0"> 
+                            <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Address</label></div>
+                            <div class="col-sm-8 m-0 p-0"> 
+                            <input type="text" class="form-control" id="" placeholder="" name="alias"></div>
+                        </div>
+
+                    </div>
+                </div>
+              
+
+           <div class="row container-fluid  p-0 m-0" style=" border: 1px solid rgba(128, 128, 128, 0.6);"> 
+      <!-- <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">  -->
+                    
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-6 m-0 p-0"> <label for="c">Name of Item</label></div>
+                        
+                    </div>
+                    
+                
+
+            </div>
+        
+           
+                
+                <!-- Listing -->
+              
+                <div class="row container" style="margin-block-start: -205px;margin-left: 530px;">
+                    <div class="col-sm-4 m-1 p-1"></div>
+                    <div class="col-sm-4 m-1 p-1" style=" background-color:rgba(0,0,0,0.2); height: 400px; padding-bottom: 10px;">
+                        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+                    <div  class="bg-info text-light">List of Ledger Accounts</div>
+                           <div>
+                               <table>
+                                <br>
+                                
+                                <tr>
+                                    <div style="text-align: right;margin-right: 20px;"><a href="">Create</a></div>   
+                                    
+                                    </tr>
+                                    <tr>
+                                        <div style="text-align: right;margin-right: 20px;"><a href="{% url 'alter' %}">Back</a></div>   
+                                        
+                                    </tr>
+                                    <hr style="width:100%;text-align:left;margin-left:0">
+                                    {% for i in ledger %}
+                        
+                                    <tr>
+                                    <div style="margin-left: 25px;"><a href="#">{{i.name}}</a></div>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                    
+                               </table>
+                           </div>
+                        </div>
+                    
+           </div>    
+{% endblock %}

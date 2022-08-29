@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    .enter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .month
+    {
+        
+        display: grid;
+        margin-left: 10px;
+        font-size:medium
+    }
+    .text{
+        text:center;
+    }
+    a:hover {
+  background-color: rgb(255, 196, 0);
+}
+
+
+</style>
+<script>
+function setPeriod(){
+
+    console.log('hi')
+    document.getElementById("fdate").defaultValue= "2022-04-01"
+    document.getElementById('ldate').defaultValue= "2022-04-30"
+    var f = document.getElementById('fdate').value;
+    var l = document.getElementById('ldate').value;
+    
+    
+}
+
+
+</script>
+
+<div class="row container-fluid p-0 mx-0 justify-content-center">
+    <div class="col-sm-10 p-0" style="background-color:rgba(0,0,0,0.2);height: 100%;">
+        <div hidden id="cid">{{ com.id }}</div>
+        <div  class="bg-info text-light">&nbsp; &nbsp;  stock item Monthly Summary<span style="margin-left: 40%;">{{cmp.name}}</span></div>
+        <div class="row container-fluid m-0 mt-4 w-100 p-0">
+            <span class="card border-bottom border-top w-50 rounded-0 contra_head">
+                <div class="card-body">
+                    <div class="card-text mt-3"><b>P a r t i c u l a r s</b></div>
+                </div>
+            </span>
+            <span class="card border w-50 text-center rounded-0 contra_head">
+                <div class="card-body p-0">
+                    <div class="card-title border-bottom mb-0">
+                    
+                        <i id="Vname">Credit Note</i><br><b>{{cmp.name}}</b><br>For 
+                        
+                    </div>
+                    <div class="card-text row border-bottom">
+                        <span class="col-sm-4 border-right p=0" ><b>Inwards</b></span>
+                        <span class="col-sm-4 border-right p=0" ><b>Outwards</b></span>
+                        <span class="col-sm-4  p=0" ><b>Closing Balance</b></span>
+                        
+                    </div>
+                    
+                    <div class="card-text row container-fluid p-0 ml-1">
+                        
+                        <span class="col-sm-2 p=0" ><b>Quantity</b></span>
+                        <span class="col-sm-2 border-right p=0" ><b>Value</b></span>
+                        <span class="col-sm-2  p=0" ><b>Quantity</b></span>
+                        <span class="col-sm-2 border-right p=0" ><b>Value</b></span>
+                        <span class="col-sm-2  p=0" ><b>Quantity</b></span>
+                        <span class="col-sm-2  p=0" ><b>Value</b></span>
+                    </div>
+                </div>
+                
+            </span>
+            <span class="card border-bottom border-top w-50 rounded-0 contra_head">
+            <div class="row container-fluid m-0 w-100 p-0">
+                <span class="col-sm-4 p=0" ><b>Opening Balance</b></span>
+                <table class="table p-0 m-0">
+                    <tbody>
+                        
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3"><a>April</a></td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{april}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">May</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{may}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">June</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{june}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">July</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{july}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">August</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{august}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">September</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{september}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">October</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{october}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">November</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{november}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">December</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{december}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">January</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{january}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">February</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{february}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">March</td>
+                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{march}}</a></td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+            </div></span>
+            <span class="card border-bottom border-top w-50 rounded-0 contra_head">
+                <div class="row container-fluid m-0 w-100 p-0">
+                    <span class="col-sm-2 p=0" ><b></b></span>
+                    <table class="table p-0 m-0">
+                        <tbody>
+                            
+                            <tr>
+                                <td class="w-75 m-0 p-0 pl-3"></td>
+                                <td class="w-25 m-0 p-0 text-center"><a href="">  {{april}}</a></td>
+                            </tr>
+                            <tr>
+                                <td class="w-75 m-0 p-0 pl-3"></td>
+                                <td class="w-25 m-0 p-0 text-center"><a href="">  {{may}}</a></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div></span>
+        </div>
+    
+<script>
+    document.getElementById("currentDate").innerHTML=new Date().toDateString();
+    function setDate(){
+            document.getElementById("currentDate").innerHTML= document.getElementById('enterDate').value;
+        }
+        var table = document.getElementById("table");
+            var cells = table.getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                if(i == 0){
+        
+                    document.getElementById("compName").innerHTML= cells[0].innerText;
+                    setName(cells[0].innerText, cells[1].innerText);
+                }
+             }
+</script>
+<!--
+<div class="row container-fluid m-0 w-100 p-0">
+    <table class="table p-0 m-0">
+        <tbody>
+            
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">April</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{april}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">May</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{may}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">June</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{june}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">July</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{july}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">August</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{august}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">September</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{september}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">October</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{october}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">November</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{november}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">December</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{december}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">January</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{january}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">February</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{february}}</a></td>
+            </tr>
+            <tr>
+                <td class="w-75 m-0 p-0 pl-3">March</td>
+                <td class="w-25 m-0 p-0 text-center"><a href="">  {{march}}</a></td>
+            </tr>
+
+            
+        </tbody>
+    </table>
+</div>  
+-->
+
+
+{% endblock %}
+

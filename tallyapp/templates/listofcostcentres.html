@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <div  style="text-align: center;margin-top:-10px;font-weight:900">{{comp.name}}</div>
+<div hidden  style="text-align: center;margin-top:-10px;font-weight:900">{{comp.id}}</div> -->
+<div class="row container-fluid p-0 mx-0">
+    <div class="col-sm-4 m-1 p-0"></div>
+    <div class="col-sm-4 m-1 p-0" style=" background-color:rgba(0,0,0,0.2);height: 500px; padding-bottom: 10px;">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+    <div  class="bg-info text-light">List of Cost Centres</div>
+    
+           <div>
+               <table>
+                <br>
+                
+                <tr>
+                    <div style="text-align: right;margin-right: 20px;"><a href="">Create</a></div>   
+                    
+                    </tr>
+                    <tr>
+                        <div style="text-align: right;margin-right: 20px;"><a href="{% url 'alter' %}">Back</a></div>   
+                        
+                    </tr>
+                    <hr style="width:100%;text-align:left;margin-left:0">
+                    <tr>
+                        <div style="margin-left: 25px;"><a href=""></a></div>   
+                    </tr>
+                  
+                    
+               </table>
+           </div>
+        </div>
+    </div>
+   
+
+{% endblock %}

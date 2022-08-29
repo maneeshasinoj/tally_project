@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<h5 class="text-capitalize" style="text-align:center;">sagma</h5>
+<div>
+    <table>
+    {% for i in com %}
+    {% if i.active == 1 %}
+    <tr>
+     <div style="margin-left: 20px;">{{i.name}}</div></tr>
+     {% endif %}
+    {% endfor %}
+    </table>
+</div>
+         
+<div class="row container-fluid p-0 mx-0">
+    <div class="col-sm-4 m-1 p-0"></div>
+    <div class="col-sm-4 m-1 p-0" style=" background-color:rgba(0,0,0,0.2);height: 400px;">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->    
+       
+    <div  class="bg-info text-light">List of Masters</div>
+    
+           <div>
+               <table>
+                {% for i in com %}
+                {% if i.active == 1 %}
+                <tr>
+                <div style="margin-left: 20px;color: black;">{{i.name}}</div></tr>
+                {% endif %}
+                {% endfor %}
+                
+                <tr>
+                <div style="text-align: right;margin-right: 20px;"><a href="{% url 'altercompany_view' %}">Change Company</a></div>   
+                
+                </tr>
+                
+                <hr style="width:100%;text-align:left;margin-left:0">
+                <tr>
+                    <div style="margin-left: 20px;">Accounting Masters</div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofgroup' %}">Group</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofledgers' %}">Ledger</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofcostcentres' %}">Cost centre</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofcurrencies' %}">Currency</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="">Rates of Exchange</a></div>   
+                </tr>
+                <tr>
+                    <div style="margin-left: 25px;"><a href="{% url 'listofvouchertypes' %}">Voucher Type</a></div>   
+                </tr>
+                
+                
+            </table>
+           </div>
+        </div>
+    </div>
+   
+   
+{% endblock %}

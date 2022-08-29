@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    .enter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+</style>
+
+<div class="">
+<h6 class="bg-info text-light text-left">credit Note Register</h6>
+<div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
+</div>
+       
+            
+
+
+
+                    <div class="row container-fluid p-0" style=" border: 1px solid rgba(128, 128, 128, 0.6); margin-top: 35px; margin-left: 0px;">
+                        
+                        <div class="col-sm-4  p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);margin-left: 500px;">
+                            
+                            <div class="row container-fluid  p-2 m-0">
+                
+                                <div class="col-sm-4 m-0 p-0" > 
+                                    <h5 class="text-left" >Particulars</h5></div>
+
+                                    <div class="col-sm-6 p-0 "style="margin-left:600px;margin-top:1px;text-left" >
+                                        <h4>Creditnote</h4>
+                                        <h5 >Transactions</h5>
+                                
+                            </div>
+                         
+                        </div>
+                        
+                       
+                   
+                    </div>
+                    
+                         
+                  
+</div>
+
+<div class="month p-2"style="margin-left:5px:" >
+    <a href="#" class="form-control">April</a>
+    <a href="#" class="form-control">May</a>
+    <a href="#" class="form-control">June</a>
+    <a href="#" class="form-control">July</a>
+    <a href="#" class="form-control">August</a>
+    <a href="#" class="form-control">September</a>
+    <a href="#" class="form-control">October</a>
+    <a href="#" class="form-control">November</a>
+    <a href="#" class="form-control">December</a>
+    <a href="#" class="form-control">January</a>
+    <a href="#" class="form-control">February</a>
+    <a href="#" class="form-control">March</a>
+</div>
+
+{% endblock %}

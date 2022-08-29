@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% block body %}
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<style>
+    table.one {
+        position:relative;
+        float:right;
+        border:solid 1px green;
+      }
+</style>
+<script>
+    function save(){
+        document.getElementById("comp").submit();
+    }
+    function showState(){
+        document.getElementById('tblState').style.visibility= "visible";
+    }
+    function setState(state){
+        document.getElementById('state').value= state;
+        document.getElementById('tblState').style.visibility= "hidden";
+        document.getElementById('country').focus();
+
+    }
+
+    $(document).ready(function(){
+        document.getElementById('tblState').style.visibility= "hidden";
+        document.getElementById('tblCountry').style.visibility= "hidden";
+        finYear();
+        document.getElementById('fin').value = new date();
+    })
+    
+
+
+</script>
+
+<div class="row container-fluid p-0 mx-0">
+    <div class="col-sm-1 m-0 p-0"></div>
+    <div class="col-sm-10 m-0 p-0" style=" background-color:rgba(0,0,0,0.2); width:50%">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+    <div  class="bg-info text-light">Company Alteration</div>
+    
+           
+            <div class="container" style="padding:40px;">
+            <form  action="" method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                
+                    <div class="row">
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom02">Company name</label>
+                            <input id="companyname" value="{{comp.name}}" type="text" class="form-control" id="validationCustom02" name="name"
+                                   required style="background-color: #2f516f;color: white;" 
+                                   onkeypress="document.getElementById('mailing_name').focus();
+                                   document.getElementById('mailing_name').value=document.getElementById('companyname').value">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom02">Mailing name</label>
+                            <input id="mailing_name" value="{{comp.mailing_name}}" type="text" onclick="addressFunction()" class="form-control" id="validationCustom02" name="mailing_name"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('address1').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Address1</label>
+                            <input type="text" value="{{comp.address1}}" id="address1" class="form-control" id="validationCustom03" name="address1"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('address2').focus();">
+                            
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Address2</label>
+                            <input type="text" value="{{comp.address2}}" id="address2" class="form-control" id="validationCustom03" name="address2"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('address3').focus();">
+                            
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Address3</label>
+                            <input type="text" value="{{comp.address3}}" id="address3" class="form-control" id="validationCustom03" name="address3"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('address4').focus();">
+                            
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Address4</label>
+                            <input type="text" value="{{comp.address4}}" id="address4" class="form-control" id="validationCustom03" name="address4"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('state').focus();">
+                            
+                        </div>
+                        <!-- <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">State</label>
+                            <input type="text" id="state" class="form-control" id="validationCustom03" name="state"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="showState();">
+                            
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Country</label>
+                            <input type="text" id="country" class="form-control" id="validationCustom03" name="country"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('pincode').focus();">
+                            
+                        </div> -->
+                    
+                        
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Pincode</label>
+                            <input id="pincode" value="{{comp.pincode}}" type="text" class="form-control" id="validationCustom03" name="pincode"
+                                   required style="background-color: #2f516f;color: white;"
+                                   pattern="[0-9]{6}"
+                                   onkeypress="document.getElementById('telephone').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Telephone</label>
+                            <input id="telephone" value="{{comp.telephone}}" type="text" class="form-control" id="validationCustom03" name="telephone"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('mobile').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Mobile</label>
+                            <input id="mobile" value="{{comp.mobile}}" type="text" class="form-control" id="validationCustom03" name="mobile"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('fax').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Fax</label>
+                            <input id="fax" value="{{comp.fax}}" type="text" class="form-control" id="validationCustom03" name="fax"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('email').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Email</label>
+                            <input id="email" value="{{comp.email}}" type="email" class="form-control" id="validationCustom03" name="email"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('website').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Website</label>
+                            <input id="website" value="{{comp.website}}" type="text" class="form-control" id="validationCustom03" name="website"
+                                   required style="background-color: #2f516f;color: white;"
+                                   >
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Financial year begin from</label>
+                            <input id="fin_year" value="{{comp.fin_begin|date:'Y-m-d'}}" type="date" class="form-control" id="validationCustom03" name="fin_begin"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('books_begin').focus();">
+                                   
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Books beginning from</label>
+                            <input id="books_begin" value="{{comp.books_begin|date:'Y-m-d'}}" type="date" class="form-control" id="validationCustom03" name="books_begin"
+                                   required style="background-color: #2f516f;color: white;"
+                                   >
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- <div class="row">
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Base currency symbol</label>
+                            <input id="currency_symbol" type="text" class="form-control" id="validationCustom03" name="currency_symbol"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="document.getElementById('formal_name').focus();">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label for="validationCustom03">Formal name</label>
+                            <input id="formal_name" type="text" class="form-control" id="validationCustom03" name="formal_name"
+                                   required style="background-color: #2f516f;color: white;"
+                                   onkeypress="save()">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div> -->
+                    <div class="col text-center">
+                        <button onclick="javascript:alert('Updated Successfully');" type="submit" class="btn btn-info" >Update</button>
+
+                      </div>
+            </form>
+            </div>
+                
+            
+        </div>
+    </div>
+    
+    
+</div>
+
+<div class="col-sm-2 m-0 p-0"></div>
+
+
+{% endblock %}
