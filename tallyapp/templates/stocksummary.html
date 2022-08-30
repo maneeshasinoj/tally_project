@@ -53,7 +53,7 @@ function setPeriod(){
                 <div class="card-body p-0">
                     <div class="card-title border-bottom mb-0">
                     
-                        <i id="Vname">Abc</i><br><b>{{cmp.name}}</b><br>For 
+                        <i id="Vname"></i><br><b>{{cmp.name}}</b><br>For 
                         
                     </div>
                     
@@ -87,16 +87,16 @@ function setPeriod(){
 <div class="row container-fluid m-0 w-100 p-0">
     <table class="table p-0 m-0">
         <tbody>
-           {% for s in stock %} 
-           {% for i in item%}
+           
+           {% for i in stock %}
             <tr>
-                <td class="w-75 m-0 p-0 pl-3"><a href="{% url 'stockgroupsummary' %}">{{ s.name}}</a> </td>
+                <td class="w-75 m-0 p-0 pl-3"><a href="{% url 'stockgroupsummary' i.id %}">{{ i.name}}</a> </td>
                 
-                <td class="w-25 m-0 p-0 text-right"><a href="">  {{i.value}}</a></td>
+                <td class="w-25 m-0 p-0 text-right"><a href="">  {{total}}</a></td>
             </tr>
             
             
-{% endfor %}
+
             {% endfor %}
         </tbody>
     </table>

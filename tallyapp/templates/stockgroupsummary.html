@@ -42,7 +42,7 @@ function setPeriod(){
 <div class="row container-fluid p-0 mx-0 justify-content-center">
     <div class="col-sm-10 p-0" style="background-color:rgba(0,0,0,0.2);height: 100%;">
         <div hidden id="cid">{{ com.id }}</div>
-        <div  class="bg-info text-light">&nbsp; &nbsp;  stock summary<span style="margin-left: 40%;">{{cmp.name}}</span></div>
+        <div  class="bg-info text-light">&nbsp; &nbsp;  stock  group summary<span style="margin-left: 40%;">{{cmp.name}}</span></div>
         <div class="row container-fluid m-0 mt-4 w-100 p-0">
             <span class="card border-bottom border-top w-75 rounded-0 contra_head">
                 <div class="card-body">
@@ -53,7 +53,7 @@ function setPeriod(){
                 <div class="card-body p-0">
                     <div class="card-title border-bottom mb-0">
                     
-                        <i id="Vname">Abc</i><br><b>{{cmp.name}}</b><br>For 
+                        <i id="Vname">Infox</i><br><b>{{cmp.name}}</b><br>For 
                         
                     </div>
                     
@@ -100,6 +100,19 @@ function setPeriod(){
 
             {% endfor %}
         </tbody>
+        <div class="row container-fluid m-0 w-100 p-0">
+            <table class="table p-0 m-0">
+                <tbody>
+                    
+                    <tr>
+                        <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
+                        <td class="w-25 m-0 p-0 text-center"><input type="text" name="total" style="text-align: right;" class="form-control" value="{{total}}" id="total" readonly></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div> 
+         
     </table>
 </div>  
 

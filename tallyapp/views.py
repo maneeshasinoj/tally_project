@@ -507,20 +507,31 @@ def add_receiptdetails(request):
     return render(request,'partydetails.html')  
 
 ##############################################################################################
+s=0
+def stocksummary(request,pk):
 
-def stocksummary(request):
+    cmp=Companies.objects.get(id=pk)
     stock=stockgroup.objects.all()
-    item=stockitems.objects.all()
+    item=stockitems.objects.filter(stockgroup_id=pk)
+    total=sum(item.values_list('value',flat=True))
     data={}
+    data['cmp']=cmp
     data['stock']=stock
     data['item']=item
+    data['total']=total
+    print(total)
     return render(request,'stocksummary.html',data)    
 
-def stockgroupsummary(request):
-    item=stockitems.objects.all()
+def stockgroupsummary(request,pk):
+    #cmp=Companies.objects.get(id=pk)
+    item=stockitems.objects.filter(stockgroup_id=pk)
+    total=sum(item.values_list('value',flat=True))
+    s=total
+    print(s)
     data={}
-    
+   # data['cmp']=cmp
     data['item']=item
+    data['total']=total
     return render(request,'stockgroupsummary.html',data)  
     
 def stockmonthly(request):

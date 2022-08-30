@@ -43,7 +43,7 @@ urlpatterns = [
     path('creditnoteregister',views.creditnoteregister,name='creditnoteregister'),
     path('date',views.date,name='date'),
     path('add_receiptdetails',views.add_receiptdetails,name='add_receiptdetails'),
-    path('stocksummary',views.stocksummary,name='stocksummary'),
-    path('stockgroupsummary',views.stockgroupsummary,name='stockgroupsummary'),
+    path('stocksummary/<int:pk>',views.stocksummary,name='stocksummary'),
+    path('stockgroupsummary/<int:pk>',views.stockgroupsummary,name='stockgroupsummary'),
     path('stockmonthly',views.stockmonthly,name='stockmonthly'),
 ]

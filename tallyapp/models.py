@@ -193,4 +193,15 @@ class stockitems(models.Model):
     rate=models.IntegerField()
     per=models.CharField(max_length=225)
     value=models.IntegerField()
+    stockgroup = models.ForeignKey(stockgroup, on_delete=models.CASCADE, blank=True,null=True)
 
+class purchase(models.Model):
+    purchaseno=models.IntegerField()
+    partyname=models.CharField(max_length=225)
+    purchaseledger=models.CharField(max_length=225)
+    date=models.DateField()
+    quantity=models.IntegerField()
+    rate=models.IntegerField()
+    per=models.CharField(max_length=225)
+    amount=models.IntegerField()
+    item=models.ForeignKey(stockitems,on_delete=models.CASCADE,blank=True,null=True)

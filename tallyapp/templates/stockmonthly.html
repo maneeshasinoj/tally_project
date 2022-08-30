@@ -75,15 +75,25 @@ function setPeriod(){
                 </div>
                 
             </span>
+            <!--
             <span class="card border-bottom border-top w-50 rounded-0 contra_head">
             <div class="row container-fluid m-0 w-100 p-0">
-                <span class="col-sm-4 p=0" ><b>Opening Balance</b></span>
+                <table class="table w-100 p-0 m-0">
+                    <tbody>
+                        
+                        <tr>
+                            <td class="w-75 m-0 p-0 pl-3">opening Balance</td>
+                            <td class="w-25 m-0 p-0 ">  10DZN  1000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <table class="table p-0 m-0">
                     <tbody>
                         
                         <tr>
                             <td class="w-75 m-0 p-0 pl-3"><a>April</a></td>
-                            <td class="w-25 m-0 p-0 text-center"><a href="">  {{april}}</a></td>
+                            <td class="w-25 m-0 p-0 text-center"><a href=""> sfdsgfd {{april}}</a></td>
                         </tr>
                         <tr>
                             <td class="w-75 m-0 p-0 pl-3">May</td>
@@ -133,6 +143,7 @@ function setPeriod(){
                     </tbody>
                 </table>
             </div></span>
+        
             <span class="card border-bottom border-top w-50 rounded-0 contra_head">
                 <div class="row container-fluid m-0 w-100 p-0">
                     <span class="col-sm-2 p=0" ><b></b></span>
@@ -152,7 +163,7 @@ function setPeriod(){
                     </table>
                 </div></span>
         </div>
-    
+    -->
 <script>
     document.getElementById("currentDate").innerHTML=new Date().toDateString();
     function setDate(){
@@ -168,8 +179,21 @@ function setPeriod(){
                 }
              }
 </script>
-<!--
+
 <div class="row container-fluid m-0 w-100 p-0">
+    <div class="row container-fluid m-0 w-100 p-0">
+        <table class="table p-0 m-0">
+            <tbody>
+                
+                <tr>
+                    <td class="w-75 m-0 p-0 pl-3">Opening Balance</td>
+                    <td class="w-25 m-0 p-0 text-center"><input type="text" name="total" style="text-align:right ;" class="form-control" value="10DZN &nbsp;&nbsp;&nbsp;&nbsp; 1000" id="total" readonly></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div> 
+     
     <table class="table p-0 m-0">
         <tbody>
             
@@ -226,7 +250,7 @@ function setPeriod(){
         </tbody>
     </table>
 </div>  
--->
+
 
 
 {% endblock %}
