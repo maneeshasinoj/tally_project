@@ -169,6 +169,9 @@ class receiptdetails(models.Model):
     invoice_date=models.DateField()
     ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE, blank=True,null=True)
 
+class stockmonths(models.Model):
+    month_name=models.CharField(max_length=225)
+
 class stockgroup(models.Model):
     name=models.CharField(max_length=225)
     alias=models.CharField(max_length=225)
@@ -194,14 +197,35 @@ class stockitems(models.Model):
     per=models.CharField(max_length=225)
     value=models.IntegerField()
     stockgroup = models.ForeignKey(stockgroup, on_delete=models.CASCADE, blank=True,null=True)
+    
 
-class purchase(models.Model):
-    purchaseno=models.IntegerField()
-    partyname=models.CharField(max_length=225)
-    purchaseledger=models.CharField(max_length=225)
-    date=models.DateField()
-    quantity=models.IntegerField()
-    rate=models.IntegerField()
-    per=models.CharField(max_length=225)
-    amount=models.IntegerField()
-    item=models.ForeignKey(stockitems,on_delete=models.CASCADE,blank=True,null=True)
+
+
+class stockmonthly(models.Model):
+    stockitem=models.ForeignKey(stockitems,on_delete=models.CASCADE)
+    openbalance_quantity=models.IntegerField(default=0)
+    openbalance_value=models.IntegerField(default=0)
+    particular=models.CharField(max_length=225)
+    inwards_quantity=models.IntegerField(default=0)
+    inwards_value=models.IntegerField(default=0)
+    outwards_quantity=models.IntegerField(default=0)
+    outwards_value=models.IntegerField(default=0)
+    closing_quantity=models.IntegerField(default=0)
+    closing_value=models.IntegerField(default=0)
+    date=models.DateField(auto_now_add=True,null=True)
+    month = models.ForeignKey(stockmonths,on_delete=models.CASCADE, null=True, blank=True)
+
+      
+
+class stockvoucher(models.Model):
+    stockmonth=models.ForeignKey(stockmonthly,on_delete=models.CASCADE)
+    date=models.DateField(auto_now_add=True)
+    particular=models.CharField(max_length=225)
+    voucher_type=models.CharField(max_length=225)
+    vch_no=models.IntegerField(default=0)
+    inwards_qty=models.IntegerField(default=0)
+    inwards_value=models.IntegerField(default=0)
+    outwards_qty=models.IntegerField(default=0)
+    outwards_value=models.IntegerField(default=0)
+    month = models.ForeignKey(stockmonths,on_delete=models.CASCADE, null=True, blank=True)
+

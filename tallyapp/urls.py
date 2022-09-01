@@ -45,5 +45,6 @@ urlpatterns = [
     path('add_receiptdetails',views.add_receiptdetails,name='add_receiptdetails'),
     path('stocksummary/<int:pk>',views.stocksummary,name='stocksummary'),
     path('stockgroupsummary/<int:pk>',views.stockgroupsummary,name='stockgroupsummary'),
-    path('stockmonthly',views.stockmonthly,name='stockmonthly'),
+    path('stockitemmonthly/<int:pk>/<int:id>',views.stockitemmonthly,name='stockitemmonthly'),
+    path('stockitemvoucher/<int:pk>/<int:id>',views.stockitemvoucher,name='stockitemvoucher')
 ]

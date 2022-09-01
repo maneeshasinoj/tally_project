@@ -6,7 +6,8 @@ from django.http import JsonResponse
 from tallyapp.models import receiptdetails
 def index(request):
     comp=Companies.objects.all()
-    return render(request,'index.html',{'comp':comp})
+    stock=stockgroup.objects.all()
+    return render(request,'index.html',{'comp':comp,'stock':stock})
 
 def company(request):
     com=Companies.objects.all()
@@ -513,18 +514,27 @@ def stocksummary(request,pk):
     cmp=Companies.objects.get(id=pk)
     stock=stockgroup.objects.all()
     item=stockitems.objects.filter(stockgroup_id=pk)
+    month=stockmonths.objects.all()
+    stockmnth=stockmonthly.objects.filter()
     total=sum(item.values_list('value',flat=True))
     data={}
     data['cmp']=cmp
     data['stock']=stock
     data['item']=item
     data['total']=total
+    data['month']=month
+    data['stockmnth']=stockmnth
     print(total)
     return render(request,'stocksummary.html',data)    
 
 def stockgroupsummary(request,pk):
     #cmp=Companies.objects.get(id=pk)
-    item=stockitems.objects.filter(stockgroup_id=pk)
+    month=stockmonths.objects.all()
+    stock=stockgroup.objects.get(id=pk)
+    print(stock)
+    item=stockitems.objects.filter(stockgroup_id=stock)
+    stockmnth=stockmonthly.objects.filter()
+    print(stockmnth)
     total=sum(item.values_list('value',flat=True))
     s=total
     print(s)
@@ -532,11 +542,93 @@ def stockgroupsummary(request,pk):
    # data['cmp']=cmp
     data['item']=item
     data['total']=total
+    data['stock']=stock
+    data['month']=month
+    data['stockmnth']=stockmnth
     return render(request,'stockgroupsummary.html',data)  
     
-def stockmonthly(request):
-    return render(request,'stockmonthly.html')
+def stockitemmonthly(request,pk,id):
+    item=stockitems.objects.get(id=pk)
+    stocks=stockmonthly.objects.filter(stockitem_id=item)
+    for i in stocks:
+        if i.month_id=='1' :
+            stock=stockmonthly.objects.filter(stockitem_id=item,month_id='1')
+            inqty1=sum(stock.values_list('inwards_quantity',flat=True))
+            invalue1=sum(stock.values_list('inwards_value',flat=True))
+            outqty1=sum(stock.values_list('outwards_quantity',flat=True))
+            outvalue1=sum(stock.values_list('outwards_value',flat=True))
+            closeqty1=sum(stock.values_list('closing_quantity',flat=True))
+            closevalue1=sum(stock.values_list('closing_value',flat=True))
+            
+            
+        else:
 
+            stockss=stockmonthly.objects.filter(stockitem_id=item,month_id='2')
+            inqty2=sum(stockss.values_list('inwards_quantity',flat=True))
+            inqty2=sum(stockss.values_list('inwards_quantity',flat=True))
+            invalue2=sum(stockss.values_list('inwards_value',flat=True))
+            outqty2=sum(stockss.values_list('outwards_quantity',flat=True))
+            outvalue2=sum(stockss.values_list('outwards_value',flat=True))
+            closeqty2=sum(stockss.values_list('closing_quantity',flat=True))
+            closevalue2=sum(stockss.values_list('closing_value',flat=True))
+    
+    
+        sum1=0
+        sum2=0
+        sum3=0
+        sum4=0
+        sum5=0
+        sum6=0
+        sum7=0
+        sum8=0
+        for i in stocks:
+            sum1+=i.openbalance_quantity
+        for i in stocks:
+            sum2+=i.openbalance_value
+        for i in stocks:
+            sum3+=i.inwards_quantity
+        for i in stocks:
+            sum4+=i.inwards_value
+        for i in stocks:
+            sum5+=i.outwards_quantity
+        for i in stocks:
+            sum6+=i.outwards_value
+        for i in stocks:
+            sum7+=i.closing_quantity
+        for i in stocks:
+            sum8+=i.closing_value
+
+        
+    data={"stocks":stocks,'item':item,
+                        'inqty2':inqty2,'invalue2':invalue2,'outqty2':outqty2,'outvalue2':outvalue2,'closeqty2':closeqty2,'closevalue2':closevalue2,
+                        'sum1':sum1,'sum2':sum2,'sum3':sum3,'sum4':sum4,
+                        'sum5':sum5,'sum6':sum6,'sum7':sum7,'sum8':sum8}
+    return render(request,'stockitemmonthly.html',data)
+
+def stockitemvoucher(request,pk,id):
+    item=stockitems.objects.get(id=pk)
+    display=stockmonthly.objects.get(particular=item.name)
+    data=stockvoucher.objects.filter(stockmonth=display,date__month=id)
+    sum1=0
+    sum2=0
+    sum3=0
+    sum4=0
+    sum5=0
+    sum6=0
+    for i in data:
+        sum1+=i.inwards_qty
+    for i in data:
+        sum2+=i.inwards_value
+    for i in data:
+        sum3+=i.outwards_qty
+    for i in data:
+        sum4+=i.outwards_value
+    for i in data:
+        sum5+=i.stockmonth.closing_quantity
+    for i in data:
+        sum6+=i.stockmonth.closing_value 
+    context={"data":data,'display':display,'sum1':sum1,'sum2':sum2,'sum3':sum3,'sum4':sum4,'sum5':sum5,'sum6':sum6,'item':item}
+    return render(request,'stockvoucher.html',context)
 
 
 

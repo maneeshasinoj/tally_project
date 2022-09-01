@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex " style="background-color: rgb(103, 175, 220);color:#fff;width:100%;margin: auto;">
+                    <div class="col ">Stock Item Monthly Summary</div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table  table-bordered border-dark " style="background-color: rgba(33,57,77,255);color:#fff;">
+
+                        <tr>
+                            <th rowspan="3"  class="align-middle text-white">Particular</th>
+                            <th colspan="6" class="text-center text-white"> <h5>{{ item.name }}</h5><h6><b> Infox</b></h6>For 1-Apr-2022</th>
+                        </tr>
+                        
+                        <tr>
+                            <th colspan="2" class="text-center text-white">Inwards</th>
+                            <th colspan="2" class="text-center text-white">Outwards</th>
+                            <th colspan="2" class="text-center text-white">Closing Balance</th>
+                        </tr>
+                          
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Value</th>
+                            <th>Quantity</th>
+                            <th>Value</th>
+                            <th>Quantity</th>
+                            <th>Value</th> 
+                        </tr>
+                        
+                    <tbody >
+                        <tr class="trhover">
+                            <th>Opening Balance</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>{{ sum1 }} DZN</th>
+                            <th>{{ sum2 }} </th>
+                        </tr>
+                        <tr >
+                            <th>April</th>
+                        </tr>
+                        <tr>
+                            <th>May</th>
+                        </tr>
+                        <tr>
+                            <th>June</th>
+                        </tr>
+                        <tr>
+                            <th>July</th>
+                        </tr>
+                        
+                        
+                        <tr class="trhover">
+                            <th><a href="{% url 'stockitemvoucher' item.id '8' %}">August</a></th>
+                            <th>{{inqty1 }} DZN</th>
+                            <th>{{invalue1}}</th>
+                            <th> {{outqty1}}DZN</th>
+                            <th>{{outvalue1}} </th>
+                            <th>{{ closeqty1}} DZN</th>
+                            <th>{{ closevalue1}}</th>
+                            
+                        </tr>
+                        
+                        <tr class="trhover">
+                            <th><a href="{% url 'stockitemvoucher' item.id '9' %}">September</a>a</th>
+                            <th>{{ sum3 }} DZN</th>
+                            <th>{{ sum4 }}</th>
+                            <th>{{ sum5 }} DZN</th>
+                            <th>{{ sum6 }} </th>
+                            <th>{{ sum7 }} DZN</th>
+                            <th>{{ sum8 }}</th>
+                        </tr>
+
+                        <tr>
+                            <th>October</th>
+                        </tr>
+                        <tr>
+                            <th>November</th>
+                        </tr>
+                        <tr>
+                            <th>December</th>
+                        </tr>
+                        <tr>
+                            <th>January</th>
+                        </tr>
+                        <tr>
+                            <th>February</th>
+                        </tr>     
+                        <tr>
+                            <th>March</th>
+                        </tr>
+                        </tr>
+                        {% for i in data %}
+                        <tr class="trhover">
+                            <td><a href="{% url 'stockitem' i.id %}">{{ i.particular }}</a></td>
+                            <td>{{ i.inwards_quantity }} DZN</td>
+                            <td>{{ i.inwards_value }}</td>
+                            <td>{{ i.Outwards_Qty }} DZN</td>
+                            <td>{{ i.Outwards_Vlu }}</td>
+                            <td>{{ i.Closing_Bal_Qty }} DZN</td>
+                            <td>{{ i.Closing_Bal_Vlu }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                        <tr>
+                            <th colspan="">GRAND TOTAL :</th>
+                            <th>{{sum3}} DZN</th>
+                            <th>{{sum4}}</th>
+                            <th>{{sum5}} DZN</th>
+                            <th>{{sum6}}</th>
+                            <th>{{sum7}} DZN</th>
+                            <th>{{sum8}}</th>
+                           </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+.trhover:hover{
+    background-color: rgb(242, 224, 104);
+}
+</style>
+
+
+{% endblock %}

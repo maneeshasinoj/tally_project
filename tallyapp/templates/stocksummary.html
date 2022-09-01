@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
@@ -89,12 +90,15 @@ function setPeriod(){
         <tbody>
            
            {% for i in stock %}
-            <tr>
+        
+           
+            <tr class="trhover">
                 <td class="w-75 m-0 p-0 pl-3"><a href="{% url 'stockgroupsummary' i.id %}">{{ i.name}}</a> </td>
                 
                 <td class="w-25 m-0 p-0 text-right"><a href="">  {{total}}</a></td>
             </tr>
-            
+        
+        
             
 
             {% endfor %}
@@ -102,7 +106,11 @@ function setPeriod(){
     </table>
 </div>  
 
-
+<style>
+    .trhover:hover{
+        background-color: rgb(235, 226, 96);
+    }
+    </style>
 
 {% endblock %}
 
