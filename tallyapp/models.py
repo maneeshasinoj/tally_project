@@ -229,3 +229,12 @@ class stockvoucher(models.Model):
     outwards_value=models.IntegerField(default=0)
     month = models.ForeignKey(stockmonths,on_delete=models.CASCADE, null=True, blank=True)
 
+class monthwise_stock(models.Model):
+    stockmonth=models.ForeignKey(stockmonthly,on_delete=models.CASCADE, null=True, blank=True)
+    month = models.ForeignKey(stockmonths,on_delete=models.CASCADE, null=True, blank=True)
+    inwards_quantity=models.IntegerField(default=0)
+    inwards_value=models.IntegerField(default=0)
+    outwards_quantity=models.IntegerField(default=0)
+    outwards_value=models.IntegerField(default=0)
+    closing_quantity=models.IntegerField(default=0)
+    closing_value=models.IntegerField(default=0)

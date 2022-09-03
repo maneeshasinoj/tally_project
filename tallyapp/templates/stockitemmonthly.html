@@ -40,6 +40,7 @@
                             <th>{{ sum1 }} DZN</th>
                             <th>{{ sum2 }} </th>
                         </tr>
+                    
                         <tr >
                             <th>April</th>
                         </tr>
@@ -52,16 +53,31 @@
                         <tr>
                             <th>July</th>
                         </tr>
-                        
-                        
+                        <tr>
+                            <th>August</th>
+                        </tr>
+                        {% for i in stock %}
+
+                        <tr class="trhover">
+                            
+                            <td><a href="{% url 'stockitemvoucher' i.id i.month_id %}"><b>september</b></a></td>
+                            <td>{{ i.inwards_quantity }} DZN</td>
+                            <td>{{ i.inwards_value }}</td>
+                            <td>{{ i.outwards_quantity }} DZN</td>
+                            <td>{{ i.outwards_value }}</td>
+                            <td>{{ i.closing_quantity }} DZN</td>
+                            <td>{{ i.closing_value }}</td>
+                        </tr>
+                        {% endfor %}
+                      <!-- 
                         <tr class="trhover">
                             <th><a href="{% url 'stockitemvoucher' item.id '8' %}">August</a></th>
-                            <th>{{inqty1 }} DZN</th>
-                            <th>{{invalue1}}</th>
-                            <th> {{outqty1}}DZN</th>
-                            <th>{{outvalue1}} </th>
-                            <th>{{ closeqty1}} DZN</th>
-                            <th>{{ closevalue1}}</th>
+                            <th>{{data.inqty1 }} DZN</th>
+                            <th>{{data.invalue1}}</th>
+                            <th> {{data.outqty1}}DZN</th>
+                            <th>{{data.outvalue1}} </th>
+                            <th>{{data.closeqty1}} DZN</th>
+                            <th>{{data.closevalue1}}</th>
                             
                         </tr>
                         
@@ -74,7 +90,7 @@
                             <th>{{ sum7 }} DZN</th>
                             <th>{{ sum8 }}</th>
                         </tr>
-
+                    -->
                         <tr>
                             <th>October</th>
                         </tr>
@@ -94,17 +110,8 @@
                             <th>March</th>
                         </tr>
                         </tr>
-                        {% for i in data %}
-                        <tr class="trhover">
-                            <td><a href="{% url 'stockitem' i.id %}">{{ i.particular }}</a></td>
-                            <td>{{ i.inwards_quantity }} DZN</td>
-                            <td>{{ i.inwards_value }}</td>
-                            <td>{{ i.Outwards_Qty }} DZN</td>
-                            <td>{{ i.Outwards_Vlu }}</td>
-                            <td>{{ i.Closing_Bal_Qty }} DZN</td>
-                            <td>{{ i.Closing_Bal_Vlu }}</td>
-                        </tr>
-                        {% endfor %}
+                    
+                        
                     </tbody>
                         <tr>
                             <th colspan="">GRAND TOTAL :</th>
@@ -122,6 +129,9 @@
         </div>
     </div>
 
+{%for i in stocks %}
+   hjehgjerh {{i.name}}
+{% endfor %}
 <style>
 .trhover:hover{
     background-color: rgb(242, 224, 104);

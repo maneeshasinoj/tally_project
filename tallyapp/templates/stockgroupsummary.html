@@ -26,10 +26,10 @@
                         <tbody>
                            {% for i in item %} 
                            {% for j in stockmnth %}
+                          
                            {% if i.id == j.stockitem_id %}
-                        
                             <tr class="trhover">
-                                <th class="text-white"><a href="{% url 'stockitemmonthly' i.id j.month_id %}">{{ i.name }}</th>
+                                <th class="text-white"><a href="{% url 'stockitemmonthly' i.id 1 %}">{{ i.name }}</th>
                                 <td class="text-center text-white">{{i.quantity}}</td>
                                 <td class="text-center text-white">{{i.rate}}</td>
                                 <td class="text-center text-white">{{ i.value }}</td>
