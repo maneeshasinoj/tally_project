@@ -1,0 +1,387 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% load static %}
+
+
+ 
+<style>
+    .form-stock {
+    visibility: hidden;       
+    position: fixed;
+    top: 230px;
+    right: 27px;
+    background-color: rgb(216, 232, 238); 
+    border: 1px solid #f1f1f1;
+    z-index: 9;
+    width: 300px;
+    
+    
+    }
+
+    .form-category {
+    visibility: hidden;       
+    position: fixed;
+    top: 230px;
+    right: 27px;
+    background-color: rgb(216, 232, 238); 
+    border: 1px solid #f1f1f1;
+    z-index: 9;
+    width: 300px;
+    
+    
+    }
+    .form-units {
+    visibility: hidden;       
+    position: fixed;
+    top: 230px;
+    right: 27px;
+    background-color: rgb(216, 232, 238); 
+    border: 1px solid #f1f1f1;
+    z-index: 9;
+    width: 300px;
+   
+    }
+    .hide{
+    display: none;
+}
+</style>
+
+<div class="" style="width: 85%;margin-left: 0%;margin-top: 2%;">
+    <h6  class="bg-info text-light p-2 m-0 text-left">Voucher Type Creation</h6>
+    <form name="myForm" id="" action="{% url 'Voucher_Type_Creation' %}"  method="post" class="p-5" style="background-color:rgba(0,0,0,.4);">
+        {% csrf_token %}
+
+        <div class="row container-fluid  p-2 m-0">
+            <div class="col-sm-2 m-0 p-0">
+                <label for="a">Name</label>
+            </div>
+            <div class="col-sm-3 m-0 p-0">
+                <input type="text" name="name" class="form-control" id=""  autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="row container-fluid  p-2 pb-5 m-0">
+            <div class="col-sm-2 m-0 p-0">
+                <label for="b">Alias</label>
+            </div>
+            <div class="col-sm-3 m-0 p-0"> 
+                <input type="text" class="form-control"  name="alias" autocomplete="off">
+            </div>
+        </div>
+
+    <div class="row container-fluid  p-0 m-0" style=" border: 1px solid rgba(128, 128, 128, 0.6);">
+
+        <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">    
+            <h5 class="py-4 text-center"><u><b>General</b></u></h5>
+                <div class="row container-fluid  p-2" id="e">
+                    <div class="col-sm-6 m-0 p-0">
+                        <label for="d">Select Type Of Voucher</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <input type="text" class="form-control" id="group" onfocus="showGroup()" autocomplete="off"  name="stv">
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2" id="a_t">
+                    <div class="col-sm-6 m-0 p-0">
+                        <label for="d">Abbrevation</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <input class="custom-select-md form-control" type="text" name="abb" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2">
+                    <div class="col-sm-6 m-0 p-0">
+                        <label for="unit">Activate This Voucher Type</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select name="avt"  class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row container-fluid  p-2 ">
+                    <div class="col-sm-6 m-0 p-0">
+                        <label for="">Method Of Voucher Numbering</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select  name="mvn" id="additional"  class="form-control" onchange="Show()()">  
+                            <option value="none">none</option>
+                            <option value="auto" >Automatic</option>
+                            <option value="auto_manual">Automatic (manual overide)</option>
+                            <option value="manual">Manual</option>
+                            <option value="mua">Multi-user Auto</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row container-fluid py-2" id="uac" style="display: none;">
+                    <div class="col-sm-6 m-0 p-0" >
+                        <label for="">Use Advanced Configration</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0 ">
+                        <select name="uac" id="" class="form-control" >
+                            <option value="no">no</option>
+                            <option value="yes">yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row container-fluid py-2" id="mno" style="display: none;" >
+                    <div class="col-sm-6 m-0 p-0" >
+                        <label for="">Prevent Duplicate</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0 py-1 ">
+                        <select name="uac" id="" class="form-control" >
+                            <option value="no">no</option>
+                            <option value="yes">yes</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0" >
+                        <label for="">Use Advanced Configration</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0 ">
+                        <select name="uac" id="" class="form-control" >
+                            <option value="no">no</option>
+                            <option value="yes">yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                
+                <div class="row container-fluid py-2" id="manual" style="display: none;" >
+                    <div class="col-sm-6 m-0 p-0" >
+                        <label for="">Prevent Duplicate</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0 ">
+                        <select name="uac" id="" class="form-control" >
+                            <option value="no">no</option>
+                            <option value="yes">yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row container-fluid py-2" id="mua" style="display: none;" >
+                    <div class="col-sm-6 m-0 p-0" >
+                        <label for="">Use Advanced Configration</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0 ">
+                        <select name="uac" id="" class="form-control" >
+                            <option value="no">no</option>
+                            <option value="yes">yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row container-fluid  p-2">
+                    <div class="col-sm-6 m-0 p-0">
+                        <label for="unit">Use Effective Date For Voucher</label>
+                    </div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select onchange="" name="uedv" class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2">
+                    <div class="col-sm-6 m-0 p-0"> <label for="unit">Allow Zero Valued Transaction</label></div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select onchange="" name="azvt" class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2">
+                    <div class="col-sm-6 m-0 p-0"> <label for="unit">Make This Voucher Type As 'Optional' By Default</label></div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select onchange="" name="mvt" class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2">
+                    <div class="col-sm-6 m-0 p-0"> <label for="unit">Allow Narrow In Voucher</label></div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select onchange="" name="anv" class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2 pb-5">
+                    <div class="col-sm-6 m-0 p-0"> <label for="unit">Provide Naration For Each Ledger In Voucher</label></div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select onchange="" name="pnlv" class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+                <div class="row container-fluid  p-2 ">
+                    <div class="col-sm-6 m-0 p-0"> <label for="unit">Enable Defualt Accounting Allocation</label></div>
+                    <div class="col-sm-6 m-0 p-0">
+                        <select onchange="" name="edaa"  class="form-control">
+                        <option value="No">No</option> 
+                        <option value="Yes">Yes</option>
+                    </select>  
+                    </div>
+                </div>
+
+        </div>
+        
+        <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">
+            <h5 class="text-center py-4"> <u> <b> Printing </b></u></h5>
+            <div class="row container-fluid p-2">
+                <div class="col-sm-6 m-0 p-0">
+                    <label for="e">Print Voucher After Saving</label>
+                </div>
+                <div class="col-sm-6 m-0 p-0">
+                    <select name="pvas" id="expiry" class="form-control">
+                        <option value="no">No</option> 
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- <div class="row container-fluid  p-2 pb-5" >
+                <div class="col-sm-6 m-0 p-0">
+                    <label for="d">Defualt Jurisdiction</label>
+                </div>
+                <div class="col-sm-6 m-0 p-0">
+                    <input class="custom-select-md form-control" type="text" name="category" autocomplete="off">
+                </div>
+            </div> -->
+
+            <!-- <div class="row container-fluid  p-2 pb-3" >
+                <div class="col-sm-6 m-0 p-0">
+                    <label for="d">Defualt Title To Print</label>
+                </div>
+                <div class="col-sm-6 m-0 p-0">
+                    <input class="custom-select-md form-control" type="text" name="category" autocomplete="off">
+                </div>
+            </div> -->
+        </div>
+
+        <div class="col-sm-4 m-0 p-4" style=" border-right: 1px solid rgba(128, 128, 128, 0.6);">
+            <h5 class="text-center py-4"> <u> <b> Name Of Class </b></u></h5>
+            <div class="row container-fluid  p-2 pb-5" >
+                <div class="col-sm-8 mx-auto">
+                    <input class="custom-select-md form-control" type="text" name="nc" autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+    </div>
+                
+    <div class="enter w-100 py-4"><button onclick="checker()" class="btn btn-info w-15" >CREATE</button></div>     
+            
+        
+    </form>
+</div>  
+    
+
+    <!-- list creation -->
+
+    <!-- Form Creation stock Groups -->
+<div class="form-stock" id="list-group" >
+    <h6 style="background-color:rgb(17, 169, 240) ;color:white">List Of Voucher Type</h6>
+<div>
+    <table >
+        {% for i in data %}
+        <tr>
+            <td>    
+                <div class="gg" onclick="hideGroup('{{i.Name}}')" style="color: black;width:100%" >{{i.Name}}</div>
+            </td>
+        </tr> 
+        {% endfor %}
+
+    </table>
+</div>
+</div>
+
+ <style>
+    tr:hover{
+        background-color: rgb(187, 145, 31);
+        
+    }
+ </style>
+
+<script>
+
+        // list showgroup
+        function showGroup() {
+            document.getElementById("list-group").style.visibility = "visible";
+        }
+        function hideGroup(valueDIv) {
+            document.getElementById("group").value=valueDIv;
+            document.getElementById("list-group").style.visibility = "hidden";
+        }
+
+</script>
+
+<script>
+
+function Show(){
+var status = document.getElementById("additional");
+var c=status.value;
+console.log(c);
+if (c=='auto'){
+    console.log(c);
+    document.getElementById('uac').style.display="flex";
+    document.getElementById('mno').style.display="none";
+    document.getElementById('manual').style.display="none";
+    document.getElementById('mua').style.display="none";
+
+}
+else if (c=='auto_manual'){
+    console.log(c);
+    document.getElementById('uac').style.display="none";
+    document.getElementById('mno').style.display="flex";
+    document.getElementById('manual').style.display="none";
+    document.getElementById('mua').style.display="none";
+
+}
+else if (c=='manual'){
+    console.log(c);
+    document.getElementById('uac').style.display="none";
+    document.getElementById('mno').style.display="none";
+    document.getElementById('manual').style.display="flex";
+    document.getElementById('mua').style.display="none";
+
+}
+else if (c=='mua'){
+    console.log(c);
+    document.getElementById('uac').style.display="none";
+    document.getElementById('mno').style.display="none";
+    document.getElementById('manual').style.display="none";
+    document.getElementById('mua').style.display="flex";
+
+}
+else {
+    document.getElementById('uac').style.display="hide";
+    document.getElementById('mno').style.display="none";
+    document.getElementById('manual').style.display="none";
+    document.getElementById('mua').style.display="none";
+}
+
+}
+
+</script>
+
+
+                        
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<div class="container-fluid" >
+    <div class="main-panel" >
+        <div class="content-wrapper" >
+            <div class="row d-flex " style="background-color: rgb(103, 175, 220);color:#fff;width:100%;margin: auto;">
+                <div class="col ">Statitics</div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered border-dark " style="background-color: rgba(33,57,77,255);color:#fff;">
+                    <tr>
+                        <th colspan="">Type Of Accounts<span>FOR 1-april-2022</span></th>              
+                        <th colspan="">Type Of Vouchers<span>FOR 1-april-2022</span></th>
+                    </tr>
+                    <tr class="trhover">
+                        <td collspan=""><a href="{% url 'Stock_Groups' %}">Stock groups <span>{{sgtotal}}</span></a></td>
+                    </tr> 
+                    <tr class="trhover">
+                        <td collspan=""><a href="{% url 'Stock_Items' %}">Stock items <span>{{sitotal}}</span></a></td>
+                    </tr> 
+                    <tr class="trhover">
+                        <td collspan=""><a href="{% url 'Voucher_Types' %}">Voucher types</a><span>{{vt_total}}</span></td>
+                    </tr> 
+                   
+                </table>
+
+                <div class="bottom text-center  d-flex justify-content-between " >
+                    <button class="btn border"></button>
+                    <button class="btn border"></button>
+                    <button class="btn border"></button>
+                    <button class="btn border"></button>
+                    <button class="btn border">REMOVE LINE</button>
+                    <button class="btn border">RESTORE LINE</button>
+                </div>
+
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+.trhover:hover{
+background-color: rgb(31, 40, 68);
+}
+span{
+    float: right;
+}
+.btn{
+    background-color:#213b52;
+    width: 35%;
+    
+}
+.bottom{
+    
+}
+
+
+</style>
+
+
+{% endblock %}

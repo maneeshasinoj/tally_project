@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    @media (max-width: 991px) {
+        .main-panel {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    .content-wrapper {
+        padding: 1.875rem 1.75rem;
+        width: 100%;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+    }
+
+    @media (max-width: 767px) {
+        #demoos {
+            display: none;
+        }
+    }
+</style>
+<div class="main-panel">
+    <div class="content-wrapperz">
+        <div class="row d-flex justify-content-center">
+            <div class="col" id="demoos"></div>
+            <div class="col" style="background-color: rgb(103, 175, 220);color:#fff;">Group Creation</div>
+            <div class="col" id="demoos"></div>
+            <!-- <div class="col"><a href="" class="float-end"><button class="btn-close"></button></a></div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 " style="background-color: rgba(33,57,77,255);color:#fff;">
+                <form action="{% url 'Group_Voucher_Create' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <label for="">Name:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">(Alias):</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="alias">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">Under:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="primary-text" onfocus="showList()"
+                                autocomplete="off" value="Primary" name="und">
+                            <!-- <select id="" class="form-control" name="und">
+                                        <option value="Primary">Primary</option>
+                                        {% for i in data %}
+                                            <option value="{{ i.name }}">{{i.name}}</option>
+                                        {% endfor %}
+                                    </select> -->
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">group behaves like a sub-ledger:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="" class="form-control" name="subledger">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">nett debit/credit balances for reporting:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="" class="form-control" name="debit/credit">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">used for calculation(taxes,discounts):</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="" class="form-control" name="used_cal">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">method to allocate when used in purchase invoice:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="" class="form-control" name="purchase_invoice">
+                                <option value="Not Applicable">Not Applicable</option>
+                                <option value="Appropriate By QNT">Appropriate By QNT</option>
+                                <option value="Appropriate By Value">Appropriate By Value</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 mb-4  d-flex justify-content-center">
+                        <button type="submit" class="form-control text-white"
+                            style="background-color: rgb(103, 175, 220);border:1px solid black; width:250px;"> Submit
+                        </button>
+                    </div>
+                </form>
+                <div class="col-md-4">
+                </div>
+            </div>
+
+            <!-- under -->
+
+            <div class="col-md-4">
+                <div class="form-popup" id="list-div" style="background-color:rgba(33,57,77,255);color:#fff; visibility: hidden;">
+                    <h6 style="background-color:rgb(17, 169, 240) ;color:white">List of Stock Groups</h6>
+                    <a href="{% url 'Creat_Group_Voucher' %}" class="float-right">create</a><br>
+                    <div class="text-center text-white">
+                        <div onclick="hideList('Primary')">Primary</div>
+                        {% for i in display %}
+                        <div onclick="hideList('{{i.Name}}')">{{i.Name}}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function showList() {
+                    document.getElementById("list-div").style.visibility = "visible";
+                }
+                function hideList(valueDIv) {
+                    document.getElementById("primary-text").value = valueDIv;
+                    document.getElementById("list-div").style.visibility = "hidden";
+                }
+            </script>
+
+            <!-- under finish -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}

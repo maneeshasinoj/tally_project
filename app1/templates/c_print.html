@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% load static %}
+
+
+    <style>
+.cheque{
+    background-color:white;
+    width:800px;
+    height:350px;
+    margin-left:150px;
+    border:2px black solid;
+    
+}
+.chqq{
+    background-color:rgb(99,194,226,.4);
+    
+    width:100%;
+    height:70%;
+   /* margin-top:10px; */
+    
+
+
+}
+.content{
+    padding:20px;
+    color:black;
+    font:bold;
+}
+
+button{
+    margin-top:20px;
+    padding: 6px 30px;
+    border-radius: 10px;
+    border: 4px solid rgb(0, 0, 0,0);
+    color: white;
+    background-color: rgb(103, 175, 220);
+}
+button:hover{
+    
+    border: 4px solid rgb(103, 175, 220);
+    color: rgb(103, 175, 220);
+    background-color: white;
+}
+    </style>
+    <div class="container">
+
+
+<div class="cheque" >
+    <form method="post" action="">
+        {% csrf_token %}
+
+<div style="display:flex;"><p style="color:black;font-size:20px;padding:10px;margin-left:60px;">{{ bb.company_name }}</p>
+    <input style="height:30px;width:200px;margin-left:330px;margin-top:10px; text-align:center;" type="date" value="{{ bb.cheque_date }}" readonly></div>
+
+    <div class="chqq">
+<div class="content">
+    <div style="display:flex;"><p style="color:black;font-size:16px;">Pay :</p>
+        <input style="height:30px;width:600px;margin-left:30px;" value="{{ bb.payee_name }}" type="text" readonly>
+    <p style="color:black;font-size:16px;margin-left:10px;">by order</p></div>
+    <div style="display:flex;"><p style="color:black;font-size:16px;">Rupees :</p>
+        <input style="height:30px;width:650px;margin-left:30px;" value="{{ bb.amt_words }} only" type="text" readonly>
+    </div>
+    <div style="display:flex;">
+        <input style="height:30px;width:580px;margin-left:10px;"  type="text" readonly>
+        <input style="height:30px;width:30px;margin-left:10px;font-size:20px;" value="₹" type="text" readonly>
+        <input style="height:30px;width:100px;" value="{{ bb.amt_number }}/-" type="text" readonly>
+    </div>
+    <!--<div style="display:flex;margin-top:10px;">
+        <input style="height:30px;width:50px;margin-left:10px;" type="text" value="A/c No." readonly>
+        <input style="height:30px;width:250px;" type="text" readonly>
+    </div>-->
+    <div style="display:flex;margin-top:75px;margin-left:600px;">
+        <p>Please sign above</p>
+    </div>
+</div>
+    </div>
+
+</form>
+</div>        
+      
+     <center>   <div ><button class="enter" class="btn btn-info" onclick="window.print()" >PRINT</button></div></center>
+
+</div>
+
+
+
+{% endblock %}    

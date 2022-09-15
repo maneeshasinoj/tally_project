@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- {% load static %} -->
+<style>
+    @media (max-width: 991px) {
+        .main-panel {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    .content-wrapper {
+        padding: 1.875rem 1.75rem;
+        width: 100%;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+    }
+
+    @media (max-width: 767px) {
+        #demoos {
+            display: none;
+        }
+    }
+</style>
+<div class="main-panel">
+    <div class="content-wrapperz">
+        <div class="row d-flex justify-content-center">
+            <div class="col" id="demoos"></div>
+            <div class="col" style="background-color: rgb(103, 175, 220);color:#fff;">Stock Group Altration (secondary)</div>
+            <div class="col" id="demoos"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 " style="background-color: rgba(33,57,77,255);color:#fff;">
+                <form action="{% url 'Edit_Stock_Group' edit.pk %}" method="post">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <label for="">Name:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="{{ edit.Name }}" name="name">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">(Alias):</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="{{ edit.Alias }}" name="alias">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">Under:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="primary-text" onfocus="showList()"
+                                autocomplete="off" value="{{ edit.Under }}" name="und">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">Should Quantity Of Item Be Added:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="" class="form-control" name="qt_itm_ad">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="">Set/Alter  GST Details:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="" class="form-control" name="set/alter">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                   
+                    <div class="row mt-4 mb-4  d-flex justify-content-center">
+                        <button type="submit" class="form-control text-white"
+                            style="background-color: rgb(103, 175, 220);border:1px solid black; width:250px;"> Submit
+                        </button>
+                    </div>
+                </form>
+                <div class="col-md-4">
+                </div>
+            </div>
+
+            <!-- under -->
+
+            <div class="col-md-4">
+                <div class="form-popup" id="list-div" style="background-color:rgba(33,57,77,255);color:#fff; visibility: hidden;">
+                    <h6 style="background-color:rgb(17, 169, 240) ;color:white">List of Groups</h6>
+                    <a href="" class="float-right">create</a><br>
+                    <div class="text-center text-white">
+                        {% for i in sg_data %}
+                        <div onclick="hideList('{{i.Name}}')">{{i.Name}}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function showList() {
+                    document.getElementById("list-div").style.visibility = "visible";
+                }
+                function hideList(valueDIv) {
+                    document.getElementById("primary-text").value = valueDIv;
+                    document.getElementById("list-div").style.visibility = "hidden";
+                }
+            </script>
+
+            <!-- under finish -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}
